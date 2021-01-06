@@ -1,0 +1,7 @@
+.Chat__message {
+  width: 100%;
+  padding: 5px 10px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  font-weight: 400;
+}

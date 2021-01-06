@@ -1,0 +1,131 @@
+.Messages {
+  box-sizing: border-box;
+  background-color: #d1c4e9;
+  display: grid;
+  grid-template-columns: 3fr 7fr;
+  grid-template-rows: 1fr;
+  height: 900px;
+  grid-template-areas: "usersData" "messagesData";
+}
+
+.usersData {
+  display: grid;
+  grid-area: "usersData";
+  box-sizing: border-box;
+  grid-template-rows: 50px 1fr 50px;
+  grid-template-areas:
+    "usersSettings"
+    "users"
+    "chatSettings";
+}
+
+.messagesData {
+  grid-area: "messagesData";
+  display: grid;
+  box-sizing: border-box;
+  grid-template-rows: 50px 1fr 60px;
+  grid-template-areas:
+    "messagesSettings"
+    "messages"
+    "textarea";
+}
+
+.Users {
+  display: flex;
+  flex-direction: column;
+  background-color: #d1c4e9;
+  grid-template-areas: "users";
+  overflow-y: scroll;
+  padding: 10px;
+}
+
+.Users a {
+  text-decoration: none;
+}
+
+.Users a + a {
+  margin-bottom: 15px;
+}
+
+.Users a.active {
+  border-color: rgba(0, 0, 0, 0.5);
+}
+
+.Users::-webkit-scrollbar {
+  width: 4px;
+}
+
+.Users::-webkit-scrollbar-track {
+  background-color: inherit;
+}
+
+.Users::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  background-color: #6dc0c8;
+}
+
+.chatSettings {
+  grid-area: "messagesSettings";
+}
+
+.Chat {
+  display: flex;
+  flex-direction: column;
+  background-color: inherit;
+  grid-area: "messages";
+  overflow-y: scroll;
+  padding: 10px;
+}
+
+.Chat::-webkit-scrollbar {
+  width: 4px;
+}
+
+.Chat::-webkit-scrollbar-track {
+  background-color: inherit;
+}
+
+.Chat::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  background-color: #6dc0c8;
+}
+
+.chat {
+  grid-area: "textarea";
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 50px 0 50px;
+}
+.chat textarea {
+  box-sizing: border-box;
+  height: 40px;
+  width: 90%;
+  padding: 10px;
+  line-height: 18px;
+  font-size: 16px;
+  outline: none;
+  resize: none;
+  color: black;
+  border-radius: 5px;
+}
+
+.chat button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  outline: none;
+  box-sizing: border-box;
+  border-radius: 50%;
+  font-size: 16px;
+  width: 30px;
+  height: 30px;
+  border: none;
+  margin: 0 5px;
+  background-color: #6a1b9a;
+  border: 1px solid #270a3a;
+}

@@ -1,0 +1,45 @@
+.Post {
+  width: 100%;
+  display: grid;
+  grid-template-rows: 11px 1fr 20px;
+  grid-template-columns: 1fr 50px;
+  grid-gap: 5px;
+}
+
+.Post span {
+  grid-row: auto;
+  display: flex;
+  align-items: center;
+}
+.Post span:nth-child(1) {
+  font-size: 11px;
+}
+.Post span:nth-child(2) {
+  grid-column: span 2;
+}
+.Post span:nth-child(3) {
+  font-size: 14px;
+  grid-row: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.Post button {
+  grid-row: 3;
+  grid-column: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  box-sizing: border-box;
+  border-radius: 4px;
+  line-height: 14px;
+  font-size: 16px;
+  border: none;
+  background-color: #6a1b9a;
+  border: 1px solid #270a3a;
+}
+
+.Post button i {
+}

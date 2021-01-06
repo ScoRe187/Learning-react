@@ -1,0 +1,19 @@
+.main {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 15px;
+  /* border: 1px solid #000; */
+  display: grid;
+  grid-template-rows: 200px 1fr;
+  grid-gap: 40px;
+  grid-template-areas:
+    "uin"
+    "Posts";
+}
+
+.main div {
+  box-sizing: border-box;
+  padding: 5px;
+  background-color: #424242;
+  border-radius: 10px;
+}

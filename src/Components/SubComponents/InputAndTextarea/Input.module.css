@@ -1,0 +1,9 @@
+.Input {
+  grid-area: "Input";
+  height: 100%;
+  width: 100%;
+  outline: none;
+  border-radius: 10px;
+  border: 1px solid #000;
+  color: #000;
+}

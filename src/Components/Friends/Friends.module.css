@@ -1,0 +1,56 @@
+.FriendsList {
+  box-sizing: border-box;
+  background-color: #d1c4e9;
+  font-size: 14px;
+  padding: 15px;
+}
+
+.FriendsList img {
+  width: 50px;
+  height: 50px;
+}
+
+.FriendItem {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 100px 1fr 100px;
+  grid-template-rows: 1fr 50px;
+  width: 100%;
+  margin: 15px 0;
+  padding: 10px;
+  border: 1px solid rgb(236, 194, 255);
+  border-radius: 15px;
+}
+
+.FriendItem + .FriendItem {
+  margin-top: 0;
+}
+
+.isFriends {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.FriendItem button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 25px;
+  outline: none;
+  box-sizing: border-box;
+  border-radius: 4px;
+  line-height: 13px;
+  font-size: 12px;
+  border: none;
+  margin: 0 5px;
+  background-color: #6a1b9a;
+  border: 1px solid #270a3a;
+}
+
+.FriendLocation {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+}

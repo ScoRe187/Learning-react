@@ -1,0 +1,68 @@
+.ProfilePostsForm {
+  grid-area: "Form";
+  display: grid;
+  grid-template-areas:
+    "Textarea"
+    "Button";
+  grid-template-rows: 1fr 50px;
+  grid-gap: 5px;
+}
+
+.ProfilePostsForm textarea {
+  grid-area: "Textarea";
+  height: 100%;
+  width: 100%;
+  outline: none;
+  border-radius: 10px;
+  border: 1px solid #000;
+  color: #000;
+  padding: 5px;
+  font-size: 16px;
+  max-width: 100%;
+  resize: vertical;
+  overflow: hidden;
+}
+
+.ButtonHolder {
+  grid-area: "Button";
+  box-sizing: border-box;
+  padding: 5px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.ButtonHolder button {
+  outline: none;
+  box-sizing: border-box;
+  border-radius: 4px;
+  line-height: 20px;
+  font-size: 16px;
+  border: none;
+  padding: 3px 7px;
+  margin: 0 5px;
+  background-color: #6a1b9a;
+  border: 1px solid #270a3a;
+}
+
+.ProfilePosts {
+  grid-area: "Posts";
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 40px auto auto;
+  grid-gap: 10px;
+  grid-template-areas:
+    "Name"
+    "Form"
+    "Old";
+  color: white;
+}
+
+.ProfilePosts textarea {
+  color: black;
+}
+
+.ProfilePosts button {
+  cursor: pointer;
+}

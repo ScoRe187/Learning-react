@@ -1,0 +1,5 @@
+.PageName {
+  grid-area: "Name";
+  display: flex;
+  align-items: center;
+}

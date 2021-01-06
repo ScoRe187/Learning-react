@@ -1,0 +1,14 @@
+.Textarea {
+  grid-area: "Textarea";
+  height: 100%;
+  width: 100%;
+  outline: none;
+  border-radius: 10px;
+  border: 1px solid #000;
+  color: #000;
+  padding: 5px;
+  font-size: 16px;
+  max-width: 100%;
+  resize: vertical;
+  overflow: hidden;
+}

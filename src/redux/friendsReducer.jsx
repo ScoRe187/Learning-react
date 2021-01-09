@@ -1,18 +1,18 @@
 const SET_FRIENDS_LIST = "SET-FRIENDS-LIST";
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
+const SET_CURRENT_PAGE = "SET-CURRENT-PAGE";
+const SET_TOTAL_COUNT = "SET-TOTAL-COUNT";
 
 let initialState = {
   friendsList: [],
+  pageSize: 20,
+  totalFriendsCount: 0,
+  currentPage: 1,
 };
 
 const FriendsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_FRIENDS_LIST:
-      return {
-        ...state,
-        friendsList: [...state.friendsList, ...action.friendsList],
-      };
     case FOLLOW:
       return {
         ...state,
@@ -33,6 +33,21 @@ const FriendsReducer = (state = initialState, action) => {
           return f;
         }),
       };
+    case SET_FRIENDS_LIST:
+      return {
+        ...state,
+        friendsList: action.friendsList,
+      };
+    case SET_CURRENT_PAGE:
+      return {
+        ...state,
+        currentPage: action.currentPage,
+      };
+    case SET_TOTAL_COUNT:
+      return {
+        ...state,
+        totalFriendsCount: action.totalFriendsCount,
+      };
     default:
       return state;
   }
@@ -49,6 +64,14 @@ export const followAC = (friendId) => ({
 export const unFollowAC = (friendId) => ({
   type: UNFOLLOW,
   friendId,
+});
+export const setCurrentPageAC = (currentPage) => ({
+  type: SET_CURRENT_PAGE,
+  currentPage,
+});
+export const setTotalCountAC = (totalFriendsCount) => ({
+  type: SET_TOTAL_COUNT,
+  totalFriendsCount,
 });
 
 export default FriendsReducer;

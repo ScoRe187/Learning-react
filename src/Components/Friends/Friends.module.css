@@ -54,3 +54,27 @@
   align-items: flex-end;
   flex-direction: column;
 }
+
+.FriendsPagination {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+}
+
+.FriendsPagination span {
+  cursor: pointer;
+  font-size: 24px;
+  transition: all 0.3s;
+}
+
+.FriendsPagination span + span {
+  margin-left: 8px;
+}
+
+.FriendsPagination span.Active {
+  font-weight: bold;
+  color: rgb(236, 194, 255);
+  text-shadow: 0 0 3px rgb(236, 194, 255);
+}

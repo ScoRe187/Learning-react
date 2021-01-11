@@ -3,12 +3,14 @@ const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
 const SET_CURRENT_PAGE = "SET-CURRENT-PAGE";
 const SET_TOTAL_COUNT = "SET-TOTAL-COUNT";
+const TOGGLE_PRELOADER = "TOGGLE-PRELOADER";
 
 let initialState = {
   friendsList: [],
   pageSize: 20,
   totalFriendsCount: 0,
   currentPage: 1,
+  isFetching: true,
 };
 
 const FriendsReducer = (state = initialState, action) => {
@@ -48,6 +50,11 @@ const FriendsReducer = (state = initialState, action) => {
         ...state,
         totalFriendsCount: action.totalFriendsCount,
       };
+    case TOGGLE_PRELOADER:
+      return {
+        ...state,
+        isFetching: action.isFetching,
+      };
     default:
       return state;
   }
@@ -72,6 +79,10 @@ export const setCurrentPageAC = (currentPage) => ({
 export const setTotalCountAC = (totalFriendsCount) => ({
   type: SET_TOTAL_COUNT,
   totalFriendsCount,
+});
+export const toggleIsFetchingAC = (isFetching) => ({
+  type: TOGGLE_PRELOADER,
+  isFetching,
 });
 
 export default FriendsReducer;

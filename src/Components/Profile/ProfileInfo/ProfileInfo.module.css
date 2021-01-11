@@ -4,11 +4,13 @@
   height: 200px;
   padding: 0 15px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 .UserInfo__Image {
   width: 170px;
+  object-fit: cover;
+  object-position: center;
 }
 
 .UserInfo__Image img {
@@ -16,4 +18,20 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
+}
+
+.UserInfo__Information {
+  display: grid;
+  grid-template-rows: repeat(5, 24px);
+  grid-gap: 3px;
+}
+
+.UserInfo__Information span,
+.UserInfo__Information div {
+  font-weight: 300;
+}
+
+.UserInfo__Information .ProfileName {
+  font-size: 20px;
+  font-weight: 500;
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import s from "./Friends.module.css";
+import { NavLink } from "react-router-dom";
 
 let Friends = (props) => {
   let pagesCount = Math.ceil(props.totalFriendsCount / props.pageSize);
@@ -30,14 +31,16 @@ let Friends = (props) => {
       <div className={s.FriendsList}>
         {props.friendsList.map((f) => (
           <div className={s.FriendItem} key={f.id}>
-            <img
-              src={
-                f.photos.small != null
-                  ? f.photos.small
-                  : "https://www.clipartmax.com/png/full/171-1717870_stockvader-predicted-cron-for-may-user-profile-icon-png.png"
-              }
-              alt="UserPhoto"
-            />
+            <NavLink to={"/profile/" + f.id}>
+              <img
+                src={
+                  f.photos.small != null
+                    ? f.photos.small
+                    : "https://www.clipartmax.com/png/full/171-1717870_stockvader-predicted-cron-for-may-user-profile-icon-png.png"
+                }
+                alt="UserPhoto"
+              />
+            </NavLink>
             <div className={s.FriendNameStatus}>{f.name}</div>
             <div className={s.FriendLocation}>
               <span className={s.FriendCountry}>{"f.location.country"}, </span>

@@ -5,7 +5,7 @@ import PageName from "../../../SubComponents/PageName/PageName";
 
 const ProfilePosts = (props) => {
   let allProfilePosts = props.posts
-    .map((el) => <Post id={el.id} text={el.text} likes={el.likes} />)
+    .map((p) => <Post key={p.id} text={p.text} likes={p.likes} />)
     .reverse();
   let newPostElement = React.createRef();
 

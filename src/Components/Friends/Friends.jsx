@@ -1,6 +1,7 @@
 import React from "react";
 import s from "./Friends.module.css";
 import { NavLink } from "react-router-dom";
+import { usersAPI } from "./../../API/api";
 
 let Friends = (props) => {
   let pagesCount = Math.ceil(props.totalFriendsCount / props.pageSize);
@@ -14,6 +15,7 @@ let Friends = (props) => {
         <input type="text" />
         <button>Search</button>
       </div>
+      <div className={s.Friends__myFriends}></div>
       <div className={s.FriendsPagination}>
         {pages.slice(0, 10).map((p) => {
           return (
@@ -29,6 +31,9 @@ let Friends = (props) => {
         })}
       </div>
       <div className={s.FriendsList}>
+        <span className={s.FriendsList__LastRegistered}>
+          The last registered users will be shown there
+        </span>
         {props.friendsList.map((f) => (
           <div className={s.FriendItem} key={f.id}>
             <NavLink to={"/profile/" + f.id}>
@@ -49,14 +54,26 @@ let Friends = (props) => {
             <span className={s.isFriends}>
               {f.friends ? (
                 <button
-                  onClick={() => props.unFollow(f.id)}
+                  onClick={() => {
+                    usersAPI.unfollowUser(f.id).then((data) => {
+                      if (data.resultCode === 0) {
+                        props.unFollow(f.id);
+                      }
+                    });
+                  }}
                   className={s.FriendlyStatus}
                 >
                   В друзьях
                 </button>
               ) : (
                 <button
-                  onClick={() => props.follow(f.id)}
+                  onClick={() => {
+                    usersAPI.followUser(f.id).then((data) => {
+                      if (data.resultCode === 0) {
+                        props.follow(f.id);
+                      }
+                    });
+                  }}
                   className={s.FriendlyStatus}
                 >
                   Добавить

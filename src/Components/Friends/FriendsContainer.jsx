@@ -1,41 +1,35 @@
 import React from "react";
 import { connect } from "react-redux";
 import Friends from "./Friends";
-import * as axios from "axios";
 import Preloader from "./../SubComponents/Preloader";
 import {
-  followAC,
-  unFollowAC,
-  setFriendsAC,
-  setCurrentPageAC,
-  setTotalCountAC,
-  toggleIsFetchingAC,
+  follow,
+  unFollow,
+  setFriends,
+  setCurrentPage,
+  setTotalCount,
+  toggleIsFetching,
 } from "../../redux/friendsReducer";
+import { usersAPI } from "./../../API/api";
 
 class FriendsContainer extends React.Component {
   componentDidMount() {
     this.props.toggleIsFetching(true);
-    axios
-      .get(
-        `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`
-      )
-      .then((res) => {
+    usersAPI
+      .getUsers(this.props.currentPage, this.props.pageSize)
+      .then((data) => {
         this.props.toggleIsFetching(false);
-        this.props.setFriends(res.data.items);
-        this.props.setTotalFriendsCount(res.data.totalCount);
+        this.props.setFriends(data.items);
+        this.props.setTotalCount(data.totalCount);
       });
   }
   onPageChange = (pageNumber) => {
     this.props.setCurrentPage(pageNumber);
     this.props.toggleIsFetching(true);
-    axios
-      .get(
-        `https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`
-      )
-      .then((res) => {
-        this.props.toggleIsFetching(false);
-        this.props.setFriends(res.data.items);
-      });
+    usersAPI.getUsers(pageNumber, this.props.pageSize).then((data) => {
+      this.props.toggleIsFetching(false);
+      this.props.setFriends(data.items);
+    });
   };
   render() {
     return (
@@ -69,10 +63,10 @@ let mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, {
-  setFriends: setFriendsAC,
-  setCurrentPage: setCurrentPageAC,
-  setTotalFriendsCount: setTotalCountAC,
-  toggleIsFetching: toggleIsFetchingAC,
-  follow: followAC,
-  unFollow: unFollowAC,
+  setFriends,
+  setCurrentPage,
+  setTotalCount,
+  toggleIsFetching,
+  follow,
+  unFollow,
 })(FriendsContainer);

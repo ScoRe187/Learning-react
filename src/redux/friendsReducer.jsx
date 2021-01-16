@@ -60,27 +60,27 @@ const FriendsReducer = (state = initialState, action) => {
   }
 };
 
-export const setFriendsAC = (friendsList) => ({
+export const setFriends = (friendsList) => ({
   type: SET_FRIENDS_LIST,
   friendsList,
 });
-export const followAC = (friendId) => ({
+export const follow = (friendId) => ({
   type: FOLLOW,
   friendId,
 });
-export const unFollowAC = (friendId) => ({
+export const unFollow = (friendId) => ({
   type: UNFOLLOW,
   friendId,
 });
-export const setCurrentPageAC = (currentPage) => ({
+export const setCurrentPage = (currentPage) => ({
   type: SET_CURRENT_PAGE,
   currentPage,
 });
-export const setTotalCountAC = (totalFriendsCount) => ({
+export const setTotalCount = (totalFriendsCount) => ({
   type: SET_TOTAL_COUNT,
   totalFriendsCount,
 });
-export const toggleIsFetchingAC = (isFetching) => ({
+export const toggleIsFetching = (isFetching) => ({
   type: TOGGLE_PRELOADER,
   isFetching,
 });

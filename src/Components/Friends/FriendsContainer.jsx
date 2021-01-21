@@ -5,31 +5,22 @@ import Preloader from "./../SubComponents/Preloader";
 import {
   follow,
   unFollow,
-  setFriends,
   setCurrentPage,
-  setTotalCount,
-  toggleIsFetching,
+  toggleInProgressSetting,
+  getUsers,
+  followToDAL,
+  unfollowToDAL,
 } from "../../redux/friendsReducer";
-import { usersAPI } from "./../../API/api";
+import {} from "./../../redux/friendsReducer";
+import { withAuthRedirect } from "./../../HOC/withAuthRedirect";
+import { compose } from "redux";
 
 class FriendsContainer extends React.Component {
   componentDidMount() {
-    this.props.toggleIsFetching(true);
-    usersAPI
-      .getUsers(this.props.currentPage, this.props.pageSize)
-      .then((data) => {
-        this.props.toggleIsFetching(false);
-        this.props.setFriends(data.items);
-        this.props.setTotalCount(data.totalCount);
-      });
+    this.props.getUsers(this.props.currentPage, this.props.pageSize);
   }
   onPageChange = (pageNumber) => {
-    this.props.setCurrentPage(pageNumber);
-    this.props.toggleIsFetching(true);
-    usersAPI.getUsers(pageNumber, this.props.pageSize).then((data) => {
-      this.props.toggleIsFetching(false);
-      this.props.setFriends(data.items);
-    });
+    this.props.getUsers(pageNumber, this.props.pageSize);
   };
   render() {
     return (
@@ -45,6 +36,10 @@ class FriendsContainer extends React.Component {
             onPageChange={this.onPageChange}
             unFollow={this.props.unFollow}
             follow={this.props.follow}
+            inProgress={this.props.inProgress}
+            followToDAL={this.props.followToDAL}
+            unfollowToDAL={this.props.unfollowToDAL}
+            isAuth={this.props.isAuth}
           />
         )}
       </>
@@ -59,14 +54,19 @@ let mapStateToProps = (state) => {
     totalFriendsCount: state.friendsPage.totalFriendsCount,
     currentPage: state.friendsPage.currentPage,
     isFetching: state.friendsPage.isFetching,
+    inProgress: state.friendsPage.inProgress,
   };
 };
 
-export default connect(mapStateToProps, {
-  setFriends,
-  setCurrentPage,
-  setTotalCount,
-  toggleIsFetching,
-  follow,
-  unFollow,
-})(FriendsContainer);
+export default compose(
+  connect(mapStateToProps, {
+    setCurrentPage,
+    toggleInProgressSetting,
+    follow,
+    unFollow,
+    getUsers,
+    followToDAL,
+    unfollowToDAL,
+  }),
+  withAuthRedirect
+)(FriendsContainer);

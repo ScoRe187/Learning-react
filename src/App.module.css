@@ -10,7 +10,7 @@
 .ContentHolder {
   max-width: 1200px;
   padding: 0 15px;
-  margin: 0 auto;
+  margin: 75px auto 0;
   grid-area: "Content";
   display: grid;
   grid-template-columns: 160px 1000px;

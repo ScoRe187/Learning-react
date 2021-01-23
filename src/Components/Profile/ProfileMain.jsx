@@ -4,18 +4,22 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import Preloader from "./../SubComponents/Preloader";
 import ProfilePosts from "./ProfilePosts/ProfilePostsForm/ProfilePosts";
 
-const Profile = ({ posts, newPostText, profile, addPost, onPostChange }) => {
-  if (!profile) {
+const Profile = (props) => {
+  if (!props.profile) {
     return <Preloader />;
   }
   return (
     <div className={s.main}>
-      <ProfileInfo profile={profile} />
+      <ProfileInfo
+        profile={props.profile}
+        status={props.status}
+        updateStatus={props.updateStatus}
+      />
       <ProfilePosts
-        posts={posts}
-        addPost={addPost}
-        onPostChange={onPostChange}
-        newPostText={newPostText}
+        posts={props.posts}
+        addPost={props.addPost}
+        onPostChange={props.onPostChange}
+        newPostText={props.newPostText}
       />
     </div>
   );

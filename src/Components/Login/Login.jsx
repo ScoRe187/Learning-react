@@ -1,7 +1,46 @@
 import React from "react";
+import { Field, reduxForm } from "redux-form";
+import s from "./Login.module.css";
+
+const LoginForm = (props) => {
+  return (
+    <form onSubmit={props.handleSubmit} className={s.LoginForm}>
+      <h1>Login</h1>
+      <span>
+        <Field
+          type={"text"}
+          name={"login"}
+          placeholder={"Login"}
+          component={"input"}
+        />
+      </span>
+      <span>
+        <Field
+          type={"password"}
+          name={"Password"}
+          placeholder={"Password"}
+          component={"input"}
+        />
+      </span>
+      <span>
+        <Field type={"checkbox"} name={"rememberMe"} component={"input"} />{" "}
+        Remember me.
+      </span>
+      <span>
+        <button>Login</button>
+      </span>
+    </form>
+  );
+};
+
+const ReduxLoginFom = reduxForm({ form: "login" })(LoginForm);
 
 const Login = (props) => {
-  return <h1>Login Page</h1>;
+  return (
+    <div className={s.LoginFormContainer}>
+      <ReduxLoginFom />
+    </div>
+  );
 };
 
 export default Login;

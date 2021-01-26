@@ -4,6 +4,7 @@ import MessagesReducer from "./messagesReducer";
 import FriendsReducer from "./friendsReducer";
 import authReducer from "./authReducer";
 import thunkMiddleware from "redux-thunk";
+import { reducer as formReducer } from "redux-form";
 
 // import NavigationReducer from "./navigationReduser";
 
@@ -12,6 +13,7 @@ let reducers = combineReducers({
   messagesPage: MessagesReducer,
   friendsPage: FriendsReducer,
   auth: authReducer,
+  form: formReducer,
   //   navigation: NavigationReducer,
 });
 

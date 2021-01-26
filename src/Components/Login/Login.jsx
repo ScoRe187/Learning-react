@@ -33,12 +33,12 @@ const LoginForm = (props) => {
   );
 };
 
-const ReduxLoginFom = reduxForm({ form: "login" })(LoginForm);
+const ReduxLoginForm = reduxForm({ form: "login" })(LoginForm);
 
 const Login = (props) => {
   return (
     <div className={s.LoginFormContainer}>
-      <ReduxLoginFom />
+      <ReduxLoginForm />
     </div>
   );
 };

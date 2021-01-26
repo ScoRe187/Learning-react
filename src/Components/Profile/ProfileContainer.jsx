@@ -4,7 +4,6 @@ import { withAuthRedirect } from "../../HOC/withAuthRedirect";
 import { connect } from "react-redux";
 import {
   addPost,
-  onPostChange,
   getUserProfile,
   getStatus,
   updateStatus,
@@ -40,14 +39,19 @@ let mapStateToProps = (state) => ({
   status: state.profilePage.status,
 });
 
-export default compose(
-  withRouter,
-  withAuthRedirect,
-  connect(mapStateToProps, {
-    addPost,
-    onPostChange,
+let mapDispatchToProps = (dispatch) => {
+  return {
+    addPost: (newPostText) => {
+      dispatch(addPost(newPostText));
+    },
     getUserProfile,
     getStatus,
     updateStatus,
-  })
+  };
+};
+
+export default compose(
+  withRouter,
+  withAuthRedirect,
+  connect(mapStateToProps, mapDispatchToProps)
 )(ProfileContainer);

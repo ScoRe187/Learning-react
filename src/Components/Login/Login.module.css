@@ -22,7 +22,7 @@
 }
 
 .LoginForm span > input {
-  border-bottom: 1px solid #2e2e2e;
+  border-bottom: 1px solid white;
 }
 
 .LoginForm span + span {

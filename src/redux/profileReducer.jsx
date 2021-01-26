@@ -1,6 +1,5 @@
 import { usersAPI, profileAPI } from "../API/api";
 const ADD_POST = "ADD-POST";
-const ON_POST_CHANGE = "ON-POST-CHANGE";
 const SET_USER_PROFILE = "SET-USER-PROFILE";
 const SET_STATUS = "SET-STATUS";
 
@@ -11,7 +10,6 @@ let initialState = {
     { id: 3, text: "My favourite pet is dog", likes: 2 },
     { id: 4, text: "Hello, my name is", likes: 5 },
   ],
-  newPostText: "",
   profile: null,
   status: "",
 };
@@ -26,17 +24,10 @@ const ProfileReducer = (state = initialState, action) => {
     case ADD_POST: {
       let newPost = {
         id: newId,
-        text: state.newPostText,
+        text: action.newPostText,
         likes: 0,
       };
-
       stateCopy.posts.push(newPost);
-      stateCopy.newPostText = "";
-      return stateCopy;
-    }
-    case ON_POST_CHANGE: {
-      let stateCopy = { ...state };
-      stateCopy.newPostText = action.postText;
       return stateCopy;
     }
     case SET_USER_PROFILE: {
@@ -55,12 +46,14 @@ const ProfileReducer = (state = initialState, action) => {
   }
 };
 
-export const addPost = () => {
+export const addPost = (newPostText) => {
   return {
     type: ADD_POST,
+    newPostText,
   };
 };
-const setUserProfile = (profile) => ({
+
+export const setUserProfile = (profile) => ({
   type: SET_USER_PROFILE,
   profile,
 });
@@ -84,12 +77,6 @@ export const updateStatus = (status) => (dispatch) => {
       dispatch(setStatus(status));
     }
   });
-};
-export const onPostChange = (postText) => {
-  return {
-    type: ON_POST_CHANGE,
-    postText,
-  };
 };
 
 export default ProfileReducer;
